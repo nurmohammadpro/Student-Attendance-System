@@ -133,7 +133,7 @@ const App = () => {
     >
       <div className="flex gap-4 items-center justify-center">
         <img src={StudentLogo} alt="" width={48} />
-        <h1 className="text-2xl font-semibold">Student Attendance App</h1>
+        <h1 className="text-2xl font-semibold">Student Attendance System</h1>
       </div>
       <div className="flex flex-col w-full gap-2 justify-between">
         <form className="flex flex-grow py-4" onSubmit={submitHandler}>
