@@ -43,16 +43,13 @@ const App = () => {
 
   const createHandler = async () => {
     try {
-      await addDoc(
-        (collection(db, "students"),
-        {
-          name: studentName,
-          isPresent: undefined,
-        })
-      );
+      await addDoc(collection(db, "students"), {
+        name: studentName,
+        isPresent: null,
+      });
       setStudentName("");
     } catch (error) {
-      console.log("Error adding doc: ", error);
+      console.error("Error adding doc: ", error);
     }
   };
 
@@ -64,14 +61,14 @@ const App = () => {
 
   const updateHandler = async () => {
     try {
-      await updateDoc(doc(db, "students, editbaStudent.id"), {
+      await updateDoc(doc(db, "students", editableStudent.id), {
         name: studentName,
       });
       setEditMode(false);
       setEditableStudent(null);
       setStudentName("");
     } catch (error) {
-      console.log("Error updating doc :", error);
+      console.log("Error updating doc: ", error);
     }
   };
 
@@ -84,7 +81,7 @@ const App = () => {
   };
 
   const makePresentHandler = async (student) => {
-    if (student.isPresent !== undefined) {
+    if (student.isPresent === true || student.isPresent === false) {
       alert(
         `This student is already in ${
           student.isPresent ? "Present List" : "Absent List"
@@ -102,7 +99,7 @@ const App = () => {
   };
 
   const makeAbsentHandler = async (student) => {
-    if (student.isPresent !== undefined) {
+    if (student.isPresent === true || student.isPresent === false) {
       alert(
         `This student is already in ${
           student.isPresent ? "Present List" : "Absent List"
@@ -204,7 +201,7 @@ const App = () => {
                 .filter((item) => item.isPresent === false)
                 .map((student) => (
                   <li key={student.id} className="flex items-center">
-                    <span className="flex-grow text-lg">{student.name}</span>{" "}
+                    <span className="flex-grow text-lg">{student.name}</span>
                     <Button
                       title="Accidentally Added"
                       onClick={() => toggleList(student)}
