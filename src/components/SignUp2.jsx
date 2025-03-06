@@ -1,13 +1,11 @@
-import { useState } from "react";
-import { auth, createUserWithEmailAndPassword } from "../firebase";
-import { updateProfile } from "firebase/auth";
+import { useState, useEffect } from "react";
+import { auth } from "../firebase";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
 import Input from "./Input";
 import Button from "./Button";
-import SpanText from "./SpanText";
-import { registerVersion } from "firebase/app";
 
-const SignUp = () => {
+const SignUp2 = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -42,8 +40,8 @@ const SignUp = () => {
     handleSignUp();
   };
   return (
-    <div className="flex flex-col items-center w-full h-screen justify-center">
-      <h1 className="text-2xl font-bold">Sign Up Now</h1>
+    <div>
+      <h1>Sign Up Here</h1>
       <form onSubmit={handleSubmit}>
         <Input
           type="text"
@@ -63,18 +61,10 @@ const SignUp = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-
         <Button title="Sign Up" onClick={handleSignUp} />
       </form>
-      <p className="text-sm w-full text-center whitespace-nowrap mt-2">
-        Already have an account? Please{" "}
-        <Link to="/signin">
-          <SpanText text="Sign in" />
-        </Link>{" "}
-        here.
-      </p>
     </div>
   );
 };
 
-export default SignUp;
+export default SignUp2;
