@@ -44,7 +44,7 @@ const SignUp = () => {
   return (
     <div className="flex flex-col items-center w-full h-screen justify-center">
       <h1 className="text-2xl font-bold">Sign Up Now</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex flex-col items-center">
         <Input
           type="text"
           placeholder="Enter your name"
