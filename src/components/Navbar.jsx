@@ -14,7 +14,8 @@ const Navbar = () => {
   const location = useLocation();
   const showProfile = location.pathname === "/dashboard";
 
-  if (loading) return null; // ✅ Prevents crashing while auth is loading
+  console.log("User object:", user);
+  if (loading) return null;
 
   const handleSignOut = async () => {
     try {
@@ -47,7 +48,9 @@ const Navbar = () => {
       {dropdownvisibility && user && (
         <div className="absolute flex flex-col items-end justify-between p-4 right-0 top-14 transition-all ease-in-out duration-500 w-48 h-72 bg-gray-100 rounded-md shadow z-10">
           <div className="px-4 py-2 rounded-md bg-gray-50 text-gray-800 flex items-center justify-end">
-            <h1 className="font-medium text-lg">{user?.name || "Guest"}</h1>
+            <h1 className="font-medium text-lg">
+              {user?.displayName || "Guest"}
+            </h1>
           </div>
           <Button title="Sign Out" onClick={handleSignOut} />
         </div>
